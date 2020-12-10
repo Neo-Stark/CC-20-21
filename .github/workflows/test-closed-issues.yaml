@@ -1,8 +1,8 @@
 name: "Comprueba cómo se han cerrado los issues"
 on:
-  pull_request:
+  push:
     paths:
-      - 'proyectos/[1234567].md'
+      - "proyectos/[1234567].md"
 
 jobs:
   closing_issue_check:
@@ -31,7 +31,7 @@ jobs:
                                                                                                state: "closed" } )
                 const issues = await github.paginate( non_paginated_issues )
                 issues.forEach( async function( issue ) {
-                    if ( ! issue.pull_request ) {
+                    if ( ! issue.push ) {
                         const query = `query($owner:String!, $name:String!, $issue:Int!) {
                             repository(name: $name , owner: $owner  ) {
                               issue(number: $issue) {
@@ -68,4 +68,3 @@ jobs:
                 })
 
             }
-

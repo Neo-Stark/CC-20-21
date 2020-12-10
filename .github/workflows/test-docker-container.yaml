@@ -1,8 +1,8 @@
 name: "Comprueba la existencia del contenedor de docker"
 on:
-  pull_request:
+  push:
     paths:
-      - 'proyectos/[34567].md'
+      - "proyectos/[34567].md"
 
 jobs:
   docker_check:
@@ -16,7 +16,7 @@ jobs:
       - name: Extrae usuario y nombre del repo
         uses: actions/github-script@v3
         env:
-            ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -34,7 +34,7 @@ jobs:
       - name: Descarga repo usuario y ejecuta contenedor
         uses: actions/checkout@v2
         with:
-          repository: '${{env.user}}/${{env.repo}}'
+          repository: "${{env.user}}/${{env.repo}}"
       - name: Ejecuta contenedor
         run: |
           if test -f "DOCKER_USER"; then
@@ -43,4 +43,3 @@ jobs:
           fi
           export CONTAINER=${user}/${repo}
           docker run -t -v `pwd`:/app/test ${CONTAINER,,}
-

@@ -1,8 +1,8 @@
 name: "Comprueba la existencia de historias de usuario"
 on:
-  pull_request:
+  push:
     paths:
-      - 'proyectos/[1234567].md'
+      - "proyectos/[1234567].md"
 
 jobs:
   user_story_check:
@@ -40,4 +40,3 @@ jobs:
                     core.setFailed( " ❌ No hay ninguna historia de usuario en el repo " )
                 }
             }
-

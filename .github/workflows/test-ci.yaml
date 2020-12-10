@@ -1,8 +1,8 @@
 name: "Comprueba el estado de la IC"
 on:
-  pull_request:
+  push:
     paths:
-      - 'proyectos/[4567].md'
+      - "proyectos/[4567].md"
 
 jobs:
   CI_status_check:
@@ -53,4 +53,3 @@ jobs:
                     console.log( "✅ Entre ellos está Travis" )
                 }
             }
-

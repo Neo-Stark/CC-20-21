@@ -1,8 +1,8 @@
 name: "Comprueba hitos"
 on:
-  pull_request:
+  push:
     paths:
-      - 'proyectos/[1234567].md'
+      - "proyectos/[1234567].md"
 
 jobs:
   check_milestones:

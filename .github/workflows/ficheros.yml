@@ -1,14 +1,14 @@
 name: "Comprobaciones básicas"
-on: [pull_request]
+on: [push]
 
 jobs:
   check_pr:
     runs-on: ubuntu-latest
     steps:
-    - name: Comprobaciones CC
-      uses: JJ/github-pr-contains-action@releases/v2
-      with:
-        github-token: ${{github.token}}
-        bodyContains: "] Prometo"
-        bodyDoesNotContain: "orrar"
-        filesChanged: 1
+      - name: Comprobaciones CC
+        uses: JJ/github-pr-contains-action@releases/v2
+        with:
+          github-token: ${{github.token}}
+          bodyContains: "] Prometo"
+          bodyDoesNotContain: "orrar"
+          filesChanged: 1

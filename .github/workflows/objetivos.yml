@@ -1,8 +1,8 @@
 name: "Los nuevos objetivos deben contener al menos un URL"
 on:
-  pull_request:
+  push:
     paths:
-      - 'objetivos/*.md'
+      - "objetivos/*.md"
 
 jobs:
   check-url-in-diff:
@@ -12,5 +12,4 @@ jobs:
         uses: JJ/github-pr-contains-action@releases/v2
         with:
           github-token: ${{github.token}}
-          diffContains: 'https://github.com'
-
+          diffContains: "https://github.com"
